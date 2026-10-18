@@ -65,7 +65,9 @@ Sem esse webhook, confira a publicação na Netlify e no próprio site; o painel
 
 ## Validação antes de liberar para Sidney
 
-`npm test` cobre migração, ocultação/ordenação, imagens, atualização de contato, HTML, JSON-LD, escape de conteúdo e isolamento do acesso local. `npm run check:activation` verifica se os identificadores e a URL foram preenchidos; **não comprova login nem publicação real**.
+`npm test` cobre migração, ocultação/ordenação, imagens, atualização de contato, HTML, JSON-LD, escape de conteúdo, isolamento do acesso local e rejeição de uma ativação inexistente.
+
+Execute `npm run check:activation -- https://comercialmix.netlify.app` para consultar a configuração publicada e confirmar que o Decap Turbo reconhece o Site ID e seu vínculo com este repositório. Sem o argumento, o comando usa `DECAP_TURBO_SITE_ID` e `SITE_URL`/`URL` do ambiente local. Um UUID preenchido ou `mode: ready` sozinho **não comprova ativação**. A consulta também **não comprova login nem publicação real**.
 
 Com as contas e a hospedagem configuradas, execute no celular:
 
