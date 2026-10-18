@@ -4,6 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  DECAP_TURBO_SITE_ID = "afcd0391-3fa9-42ac-ada1-80d974e299df"
 
 [[redirects]]
   from = "/admin"
