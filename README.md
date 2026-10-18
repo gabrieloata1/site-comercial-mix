@@ -4,9 +4,9 @@ Vitrine estática com catálogo sem preços, orçamento pelo WhatsApp e painel D
 
 ## Estado da entrega
 
-O site e o painel estão publicados em [comercialmix.netlify.app](https://comercialmix.netlify.app/). O Decap Turbo está vinculado a `gabrieloata1/site-comercial-mix`, branch `main`, com o Site ID público `0b1e8368-1fc1-4b2a-addf-ad9aeeb723fd` configurado em `netlify.toml`.
+O site e o painel estão publicados em [comercialmix.netlify.app](https://comercialmix.netlify.app/). O Decap Turbo está na conta própria do Sidney, vinculado a `gabrieloata1/site-comercial-mix`, branch `main`, com o Site ID público `d4ab93eb-4691-49ef-82b8-7786f89fe3fe` configurado em `netlify.toml`. O GitHub e a Netlify permanecem nas contas do responsável técnico. A conexão GitHub autoriza somente este repositório.
 
-**Validação em produção em 18/10/2026:** entrada no painel com a sessão autorizada do responsável, leitura dos seis produtos, envio de uma foto, gravação pelo CMS no GitHub e publicação automática na Netlify confirmados. A foto de teste era uma cópia da original; o produto foi restaurado e o arquivo temporário removido. Os nove testes automatizados e o build passaram. O acesso individual do Sidney e o fluxo de recuperação de senha ainda precisam ser concluídos; o plano gratuito tem uma única vaga, já ocupada pelo proprietário.
+**Validação em produção em 18/10/2026:** entrada no editor identificada com a conta própria do Sidney, leitura dos seis produtos, cadastro de um item oculto com upload de foto, gravação pelo CMS no GitHub e publicação automática na Netlify confirmados. O Turbo recebeu o aviso de sucesso da Netlify. A imagem publicada correspondeu à enviada, e o item oculto não apareceu na vitrine, que manteve os seis produtos originais. O item e a cópia de foto temporários foram removidos nesta revisão. Os nove testes automatizados e o build passaram antes da publicação da configuração. A recuperação de senha não foi revalidada nesta sessão.
 
 Sem `DECAP_TURBO_SITE_ID`, `/admin/` continua mostrando que o acesso ainda não foi liberado; não usa uma senha fictícia nem um editor público. O build do site continua funcionando.
 
@@ -57,7 +57,7 @@ A integração usa **Decap Turbo**, o backend mantido pela equipe do Decap. Não
 5. Libere acesso ao site para a conta que Sidney usará. Uma conta no Turbo sem associação ao site não basta. Não compartilhe uma senha entre pessoas.
 6. Publique novamente na Netlify, abra `/admin/` e conclua a validação real descrita abaixo.
 
-**Limites consultados em 18/10/2026:** o plano Free do Turbo inclui um site e **um usuário, contando o proprietário**. Proprietário e Sidney como duas contas precisam de um plano com mais lugares. O Pro divulgado custa €19/mês para um site e cinco usuários. Nenhuma assinatura ou período de teste pago foi ativado por este projeto. Defina a titularidade e confira os valores atuais antes da ativação. Os limites de uso da Netlify também se aplicam; não há promessa de custo total zero.
+**Limites consultados em 18/10/2026:** o plano Free do Turbo inclui um site e **um usuário, contando o proprietário**. Nesta instalação, Sidney é o proprietário e único membro da organização ativa, com acesso completo ao site. A conta antiga do responsável técnico não foi adicionada a essa organização. O Pro divulgado custa €19/mês para um site e cinco usuários; nenhuma assinatura ou período de teste pago foi ativado por este projeto. Confira os valores atuais antes de adicionar usuários. Os limites de uso da Netlify também se aplicam; não há promessa de custo total zero.
 
 Referências: [configuração do backend](https://decapcms.org/docs/turbo-connecting-a-site/), [acesso e conexão Git](https://decapcms.org/docs/turbo-getting-started/), [planos](https://decapcms.org/turbo/), [Git Gateway desaconselhado para novas configurações](https://docs.netlify.com/manage/security/secure-access-to-sites/git-gateway/).
 
@@ -65,7 +65,7 @@ Referências: [configuração do backend](https://decapcms.org/docs/turbo-connec
 
 Salvar no painel cria um commit; o site só muda depois do build bem-sucedido da Netlify. Para o Decap avisar quando a mudança estiver no ar, configure o webhook indicado em **Turbo → site → Deploys** em **Netlify → Project configuration → Notifications → Deploy notifications** para os três eventos: início, sucesso e falha. A URL e o segredo do webhook devem ser cadastrados nos serviços, nunca neste repositório. [Instruções oficiais](https://decapcms.org/docs/turbo-deploy-status-setup/).
 
-Nesta instalação, os três eventos foram configurados em 18/10/2026, com assinatura JWS. O segredo está somente nos serviços, fora do Git.
+Nesta instalação, os três eventos foram reconfigurados em 18/10/2026 para o novo Site ID da conta do Sidney, com assinatura JWS. Um aviso de sucesso real da Netlify foi recebido pelo novo site no Turbo. O segredo está somente nos serviços, fora do Git.
 
 Sem esse webhook, confira a publicação na Netlify e no próprio site; o painel não deve ser interpretado como confirmação de deploy.
 
