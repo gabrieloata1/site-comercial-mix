@@ -1,0 +1,107 @@
+# Read by both the build and Decap Turbo's collection permissions.
+# Activation: set DECAP_TURBO_SITE_ID in Netlify, or insert the public UUID here.
+backend:
+  name: turbo-github
+  turbo_site_id: ""
+  branch: main
+  commit_messages:
+    create: 'Cadastrar {{collection}}: {{slug}}'
+    update: 'Atualizar {{collection}}: {{slug}}'
+    delete: 'Remover {{collection}}: {{slug}}'
+    uploadMedia: 'Adicionar foto: {{path}}'
+    deleteMedia: 'Remover foto: {{path}}'
+locale: pt
+display_url: /
+logo_url: /assets/img/logo-comercial-mix-vetor.jpg
+media_folder: assets/img
+public_folder: /assets/img
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: '-'
+collections:
+  - name: products
+    label: Produtos
+    label_singular: Produto
+    description: 'Fotos, descrições e visibilidade do catálogo. Orçamentos continuam pelo WhatsApp, sem preços no site.'
+    folder: content/products
+    create: true
+    delete: false
+    extension: json
+    format: json
+    slug: '{{slug}}'
+    summary: '{{title}}'
+    sortable_fields: [order, title]
+    view_groups:
+      - {label: Segmento, field: segment}
+    fields:
+      - label: Nome do produto
+        name: title
+        widget: string
+        pattern: ['^.{1,120}$', 'Informe até 120 caracteres.']
+      - label: Descrição
+        name: description
+        widget: text
+        pattern: ['^[\s\S]{1,1500}$', 'Informe até 1.500 caracteres.']
+        hint: Descreva o modelo e suas aplicações. Informe apenas características confirmadas.
+      - label: Segmento
+        name: segment
+        widget: select
+        default: Geral
+        options: [Geral, Offshore e onshore, Construção civil e andaimes, Resíduos e reciclagem, Agronegócio, Logística]
+      - label: Foto
+        name: image
+        widget: image
+        allow_multiple: false
+        hint: Use JPG, PNG ou WebP de até 8 MB. Prefira fotos com até 1.600 pixels de largura.
+        choose_url: false
+        media_library:
+          config: {max_file_size: 8388608}
+      - label: O que aparece na foto?
+        name: alt
+        widget: string
+        pattern: ['^.{1,250}$', 'Descreva a foto em até 250 caracteres.']
+        hint: 'Descrição curta para acessibilidade. Exemplo: Big bag branco com quatro alças azuis.'
+      - {label: Mostrar no site, name: active, widget: boolean, default: false, hint: 'Ative quando o produto estiver pronto para aparecer no catálogo.'}
+      - {label: Ordem no catálogo, name: order, widget: number, value_type: int, min: 0, max: 9999, default: 100, hint: 'Números menores aparecem primeiro: 10, 20, 30…'}
+  - name: deliveries
+    label: Fotos de entregas
+    label_singular: Foto de entrega
+    description: Galeria de veículos e entregas da Comercial Mix.
+    folder: content/deliveries
+    create: true
+    delete: false
+    extension: json
+    format: json
+    slug: '{{slug}}'
+    summary: '{{title}}'
+    sortable_fields: [order, title]
+    fields:
+      - {label: Título, name: title, widget: string, pattern: ['^.{1,120}$', 'Informe até 120 caracteres.']}
+      - {label: Legenda, name: description, widget: text, pattern: ['^[\s\S]{1,1500}$', 'Informe até 1.500 caracteres.']}
+      - label: Foto
+        name: image
+        widget: image
+        allow_multiple: false
+        choose_url: false
+        hint: JPG, PNG ou WebP de até 8 MB.
+        media_library:
+          config: {max_file_size: 8388608}
+      - {label: O que aparece na foto?, name: alt, widget: string, pattern: ['^.{1,250}$', 'Descreva a foto em até 250 caracteres.']}
+      - {label: Mostrar no site, name: active, widget: boolean, default: false}
+      - {label: Ordem na galeria, name: order, widget: number, value_type: int, min: 0, max: 9999, default: 100}
+  - name: settings
+    label: Contato
+    editor: {preview: false}
+    files:
+      - label: Atendimento
+        name: contact
+        file: content/settings.json
+        fields:
+          - label: WhatsApp
+            name: whatsapp
+            widget: string
+            pattern: ['^55\d{10,11}$', 'Use 55 + DDD + número, somente dígitos. Exemplo: 5522998778259.']
+            hint: Este número atualiza todos os botões de orçamento do site.
+          - {label: Responsável pelo atendimento, name: contact_name, widget: string, pattern: ['^.{1,100}$', 'Informe até 100 caracteres.']}
+          - {label: Horário de atendimento, name: hours, widget: string, pattern: ['^.{1,200}$', 'Informe até 200 caracteres.']}
