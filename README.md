@@ -4,7 +4,11 @@ Vitrine estática com catálogo sem preços, orçamento pelo WhatsApp e painel D
 
 ## Estado da entrega
 
-O código do painel, os campos de edição e a geração do site estão implementados. **A autenticação em produção depende da ativação do Decap Turbo e da conexão do site com a Netlify.** Sem `DECAP_TURBO_SITE_ID`, `/admin/` mostra que o acesso ainda não foi liberado; não usa uma senha fictícia nem um editor público. O build do site continua funcionando.
+O site e o painel estão publicados em [comercialmix.netlify.app](https://comercialmix.netlify.app/). O Decap Turbo está vinculado a `gabrieloata1/site-comercial-mix`, branch `main`, com o Site ID público `0b1e8368-1fc1-4b2a-addf-ad9aeeb723fd` configurado em `netlify.toml`.
+
+**Validação em produção em 18/10/2026:** entrada no painel com a sessão autorizada do responsável, leitura dos seis produtos, envio de uma foto, gravação pelo CMS no GitHub e publicação automática na Netlify confirmados. A foto de teste era uma cópia da original; o produto foi restaurado e o arquivo temporário removido. Os nove testes automatizados e o build passaram. O acesso individual do Sidney e o fluxo de recuperação de senha ainda precisam ser concluídos; o plano gratuito tem uma única vaga, já ocupada pelo proprietário.
+
+Sem `DECAP_TURBO_SITE_ID`, `/admin/` continua mostrando que o acesso ainda não foi liberado; não usa uma senha fictícia nem um editor público. O build do site continua funcionando.
 
 - Catálogo inicial: seis produtos, três fotos de entregas, texto do cliente, logo e atendimento estadual preservados.
 - Produtos: cadastrar, editar nome/descrição/segmento/foto, mostrar ou ocultar e ordenar.
@@ -60,6 +64,8 @@ Referências: [configuração do backend](https://decapcms.org/docs/turbo-connec
 ## Acompanhar publicação
 
 Salvar no painel cria um commit; o site só muda depois do build bem-sucedido da Netlify. Para o Decap avisar quando a mudança estiver no ar, configure o webhook indicado em **Turbo → site → Deploys** em **Netlify → Project configuration → Notifications → Deploy notifications** para os três eventos: início, sucesso e falha. A URL e o segredo do webhook devem ser cadastrados nos serviços, nunca neste repositório. [Instruções oficiais](https://decapcms.org/docs/turbo-deploy-status-setup/).
+
+Nesta instalação, os três eventos foram configurados em 18/10/2026, com assinatura JWS. O segredo está somente nos serviços, fora do Git.
 
 Sem esse webhook, confira a publicação na Netlify e no próprio site; o painel não deve ser interpretado como confirmação de deploy.
 
