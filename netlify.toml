@@ -4,6 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  SITE_URL = "https://comercialmixrj.com.br"
   DECAP_TURBO_SITE_ID = "d4ab93eb-4691-49ef-82b8-7786f89fe3fe"
 
 [[redirects]]

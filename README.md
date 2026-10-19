@@ -4,7 +4,9 @@ Vitrine estática com catálogo sem preços, orçamento pelo WhatsApp e painel D
 
 ## Estado da entrega
 
-O site e o painel estão publicados em [comercialmix.netlify.app](https://comercialmix.netlify.app/). O Decap Turbo está na conta própria do Sidney, vinculado a `gabrieloata1/site-comercial-mix`, branch `main`, com o Site ID público `d4ab93eb-4691-49ef-82b8-7786f89fe3fe` configurado em `netlify.toml`. O GitHub e a Netlify permanecem nas contas do responsável técnico. A conexão GitHub autoriza somente este repositório.
+O domínio definitivo configurado é [comercialmixrj.com.br](https://comercialmixrj.com.br/), com o painel em [/admin/](https://comercialmixrj.com.br/admin/). O endereço [comercialmix.netlify.app](https://comercialmix.netlify.app/) continua disponível. O Decap Turbo está na conta própria do Sidney, vinculado a `gabrieloata1/site-comercial-mix`, branch `main`, com o Site ID público `d4ab93eb-4691-49ef-82b8-7786f89fe3fe` configurado em `netlify.toml`. Os dois endereços do painel estão autorizados no Turbo. O GitHub e a Netlify permanecem nas contas do responsável técnico. A conexão GitHub autoriza somente este repositório.
+
+**DNS configurado em 18/10/2026:** domínio principal e alias `www` associados ao projeto `comercialmix` na Netlify. Servidores `dns1.p02.nsone.net`, `dns2.p02.nsone.net`, `dns3.p02.nsone.net` e `dns4.p02.nsone.net` salvos no Registro.br, que informou uma transição inicial de aproximadamente duas horas. A zona Netlify contém os registros dos dois endereços e preserva o MX nulo (`0 .`) e o TXT (`v=spf1 -all`) originais; não há serviço de e-mail contratado/configurado. A disponibilidade pública e a emissão automática do certificado HTTPS dependem da conclusão da delegação e da propagação. Consulte **Netlify → Domain management → HTTPS** e os servidores DNS públicos para confirmar a ativação. `SITE_URL` em `netlify.toml` gera canonical, compartilhamento, sitemap e configuração do painel com o domínio definitivo.
 
 **Validação em produção em 18/10/2026:** entrada no editor identificada com a conta própria do Sidney, leitura dos seis produtos, cadastro de um item oculto com upload de foto, gravação pelo CMS no GitHub e publicação automática na Netlify confirmados. O Turbo recebeu o aviso de sucesso da Netlify. A imagem publicada correspondeu à enviada, e o item oculto não apareceu na vitrine, que manteve os seis produtos originais. O item e a cópia de foto temporários foram removidos nesta revisão. Os nove testes automatizados e o build passaram antes da publicação da configuração. A recuperação de senha não foi revalidada nesta sessão.
 
@@ -73,7 +75,7 @@ Sem esse webhook, confira a publicação na Netlify e no próprio site; o painel
 
 `npm test` cobre migração, ocultação/ordenação, imagens, atualização de contato, HTML, JSON-LD, escape de conteúdo, isolamento do acesso local e rejeição de uma ativação inexistente.
 
-Execute `npm run check:activation -- https://comercialmix.netlify.app` para consultar a configuração publicada e confirmar que o Decap Turbo reconhece o Site ID e seu vínculo com este repositório. Sem o argumento, o comando usa `DECAP_TURBO_SITE_ID` e `SITE_URL`/`URL` do ambiente local. Um UUID preenchido ou `mode: ready` sozinho **não comprova ativação**. A consulta também **não comprova login nem publicação real**.
+Execute `npm run check:activation -- https://comercialmixrj.com.br` para consultar a configuração publicada e confirmar que o Decap Turbo reconhece o Site ID e seu vínculo com este repositório. Sem o argumento, o comando usa `DECAP_TURBO_SITE_ID` e `SITE_URL`/`URL` do ambiente local. Um UUID preenchido ou `mode: ready` sozinho **não comprova ativação**. A consulta também **não comprova login nem publicação real**.
 
 Com as contas e a hospedagem configuradas, execute no celular:
 
